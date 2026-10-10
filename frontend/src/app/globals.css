@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Theme tokens as "R G B" triplets (see tailwind.config.ts).
+ * paper: page background, surface: raised panels, ink: body text, graphite: secondary text,
+ * rule: borders, lens: primary action, highlight: matched-skill marker, redpen: missing / errors.
+ * All text colours meet WCAG AA (4.5:1) against paper and surface in both themes.
+ */
+:root {
+  --paper: 246 248 251;
+  --surface: 255 255 255;
+  --ink: 23 32 51;
+  --graphite: 79 88 106;
+  --rule: 216 223 232;
+  --lens: 35 71 168;
+  --lens-ink: 255 255 255;
+  --highlight: 251 227 142;
+  --highlight-ink: 23 32 51;
+  --redpen: 179 49 27;
+  --amber: 150 88 0;
+  --moss: 30 107 69;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: 14 23 38;
+  --surface: 21 33 53;
+  --ink: 230 234 242;
+  --graphite: 160 170 189;
+  --rule: 44 60 87;
+  --lens: 132 160 255;
+  --lens-ink: 14 23 38;
+  --highlight: 112 96 30;
+  --highlight-ink: 255 244 204;
+  --redpen: 255 128 108;
+  --amber: 240 180 80;
+  --moss: 104 214 152;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    @apply bg-paper text-ink antialiased;
+    font-feature-settings: "kern", "liga", "tnum";
+  }
+
+  body {
+    @apply min-h-screen font-sans text-[15px] leading-relaxed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-semibold tracking-tight text-ink;
+  }
+
+  ::selection {
+    @apply bg-highlight text-highlight-ink;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-lens;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-lens text-lens-ink hover:bg-lens/90;
+  }
+
+  .btn-secondary {
+    @apply btn border border-rule bg-surface text-ink hover:border-graphite;
+  }
+
+  .btn-danger {
+    @apply btn border border-redpen/40 bg-surface text-redpen hover:border-redpen hover:bg-redpen/5;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-ink;
+  }
+
+  /* Text quoted from the user's documents is set in serif to separate it from UI copy. */
+  .doc-quote {
+    @apply font-serif text-[15px] leading-[1.65] text-ink;
+  }
+
+  /* Highlighter stroke for matched skills. */
+  .mark-highlight {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 18%,
+      rgb(var(--highlight)) 18%,
+      rgb(var(--highlight)) 88%,
+      transparent 88%
+    );
+    @apply text-highlight-ink;
+  }
+
+  /* Red-pen underline for missing required skills. */
+  .mark-redpen {
+    @apply underline decoration-redpen decoration-2 underline-offset-4;
+    text-decoration-style: wavy;
+  }
+
+  .skeleton {
+    @apply animate-shimmer rounded bg-rule/70;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

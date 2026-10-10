@@ -1,0 +1,33 @@
+# ResumeLens backend runtime dependencies (Python 3.11).
+# Versions are pinned and were resolved together for CPython 3.11 on Linux x86_64.
+# torch: on Linux, `pip install` from PyPI pulls the CUDA build (~2.5 GB). For a much
+# smaller CPU-only install run this FIRST, then install this file:
+#   pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+# (the Dockerfile does exactly that). Windows and Apple Silicon wheels on PyPI are CPU-only.
+
+# Web framework
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.20
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+# Storage
+SQLAlchemy==2.0.36
+
+# PDF parsing
+pdfplumber==0.11.4
+PyMuPDF==1.24.14
+
+# NLP / ML
+spacy==3.8.3
+numpy==1.26.4
+scikit-learn==1.5.2
+torch==2.5.1
+transformers==4.46.3
+huggingface-hub==0.26.5
+sentence-transformers==3.3.1
+
+# Optional LLM bullet rewriter (only used when ANTHROPIC_API_KEY is set)
+anthropic==0.45.2
+httpx==0.28.1

@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    "no-console": ["warn", { "allow": ["error"] }],
+    "prefer-const": "error",
+    "react/jsx-no-useless-fragment": "error",
+    "react/self-closing-comp": "error"
+  }
+}

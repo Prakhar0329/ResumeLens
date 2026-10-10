@@ -1,0 +1,60 @@
+# ---- Secrets and local config ----
+.env
+.env.*
+!.env.example
+!.env.local.example
+**/.env
+**/.env.local
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# ---- SQLite database ----
+backend/data/*
+!backend/data/.gitkeep
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ---- Model caches ----
+.cache/
+models/
+**/huggingface/
+**/sentence_transformers/
+
+# ---- Evaluation: keep templates and docs, never resumes or outputs ----
+backend/evaluation/data/*
+!backend/evaluation/data/.gitkeep
+backend/evaluation/results.md
+backend/evaluation/results.csv
+backend/evaluation/per_pair_scores.csv
+
+# ---- Node / Next.js ----
+node_modules/
+.next/
+out/
+frontend/coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vercel
+
+# ---- OS / editors ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

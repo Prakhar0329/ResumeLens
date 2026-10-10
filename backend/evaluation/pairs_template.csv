@@ -1,0 +1,4 @@
+pair_id,resume_pdf,jd_txt,human_score
+EXAMPLE_001,data/resumes/EXAMPLE_resume_backend.pdf,data/jds/EXAMPLE_jd_backend.txt,78
+EXAMPLE_002,data/resumes/EXAMPLE_resume_backend.pdf,data/jds/EXAMPLE_jd_data_scientist.txt,35
+EXAMPLE_003,data/resumes/EXAMPLE_resume_frontend.pdf,data/jds/EXAMPLE_jd_frontend.txt,62
